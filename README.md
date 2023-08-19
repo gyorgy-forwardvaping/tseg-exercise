@@ -15,7 +15,9 @@ terms:
     * EAC – Estimated Annual Consumption, the amount of kWh we expect a meter 
         to use each year.
 Params:
+
     DB tables:
+
         +Meters:
             -id auto increment
             -identifier (mpxn) unique
@@ -30,7 +32,6 @@ Params:
             -reading date
 
 
-
     Tasks:
         Meters {
             -Create form whee user can add new meter
@@ -43,9 +44,9 @@ Params:
             -recorded reading show in the details page
             -validation (reading can be just Integer)
         }
-/******************************************************************************/
+
         Optional tasks:
-/******************************************************************************/
+
         +A {
             - if reading not recorded at the time, calculate the usage used by 
                 estiamted annual consumption
