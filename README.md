@@ -1,19 +1,30 @@
 # tseg-exercise
+
 the student energy group exercise
+
 terms:
+
     * Meter – an installed piece of equipment to measure energy consumption that 
         sits between a house and the energy distribution network.
+
     * Meter Serial Number – a unique identifier for an installed meter
+
     * Meter Reading – a measurement of energy consumption through a meter
+
     * kWh – a kilowatt-hour
+
     * MPAN – the Meter Point Administration Number is a unique identifier for an 
         electricity meter
+
     * MPRN – the Meter Point Reference Number is a unique identifier for a 
         gas meter
+
     * MPXN – an unofficial way TSEG refers to a meter identifier when referring 
         to meters in general. An MPXN could be an MPAN or MPRN.
+
     * EAC – Estimated Annual Consumption, the amount of kWh we expect a meter 
         to use each year.
+
 Params:
 
     DB tables:
