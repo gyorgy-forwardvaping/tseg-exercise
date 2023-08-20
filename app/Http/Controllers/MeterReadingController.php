@@ -12,22 +12,25 @@ class MeterReadingController extends Controller
             'reading_date' => 'required'
         ]);
         
-        $target = ($meter->estimated_annual_consumption / 12);
-        
-        if ($meter->getRawOriginal('installation_date') < $inputs['reading_date']) {
-            if (($target * 1.25) >= $inputs['value']) {
-                if ($meter->readings()->create($inputs)) {
-                    $request->session()->flash('create_success', 'Reading recorded successfully');
+        if (is_int($inputs['value'])) {
+            $target = ($meter->estimated_annual_consumption / 12);
+
+            if ($meter->getRawOriginal('installation_date') < $inputs['reading_date']) {
+                if (($target * 1.25) >= $inputs['value']) {
+                    if ($meter->readings()->create($inputs)) {
+                        $request->session()->flash('create_success', 'Reading recorded successfully');
+                    } else {
+                        $request->session()->flash('create_error', 'Reading record error');
+                    }    
                 } else {
-                    $request->session()->flash('create_error', 'Reading record error');
+                    $request->session()->flash('create_error', 'Value is greater than expected!');
                 }    
             } else {
-                $request->session()->flash('create_error', 'Value is greater than expected!');
+                $request->session()->flash('create_error', 'Error: Reading date is earlier than the Meter installation date!');
             }    
         } else {
-            $request->session()->flash('create_error', 'Error: Reading date is earlier than the Meter installation date!');
+                $request->session()->flash('create_error', 'Error: Reading value must be whole number!');
         }
-        
         
         return redirect()->route('meter.view', $meter->id);
     }
